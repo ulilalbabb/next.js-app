@@ -1,0 +1,26 @@
+.product {
+    width: 100%;
+    padding: 0 5%;
+    &__title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    &__content {
+        display: flex;
+        &__item {
+            width: 25%;
+            padding: 1rem;
+            &__name {
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+            &__category {
+                color: gray;           }
+            &__price {
+                font-size: 1rem;
+                font-weight: bold;
+            }
+        }
+    }
+}

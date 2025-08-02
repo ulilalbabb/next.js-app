@@ -1,17 +1,12 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase/init";
+import ProductView from "@/views/Product/Main";
+import { ProductType } from "@/views/Product/Main";
 
-type productType = {
-    id: number;
-    name: string;
-    price: number;
-    size: string;
-};
 
 const ProductPage = () => {
-    // const [products, setProducts] = useState([])
-    const [postProducts, setPostProducts] = useState<productType[]>([])
+    const [products, setProducts] = useState<ProductType[]>([])
     // const [isLogin, setIsLogin] = useState(false)
     // const  { push } = useRouter()
     // useEffect(() => {
@@ -38,34 +33,16 @@ const ProductPage = () => {
                 return
             }
 
-            setPostProducts(data as productType[])
+            setProducts(data as ProductType[])
         }
 
         fetchPosts()
     }, [])
 
     return (
-        <div className="h-screen flex justify-center items-center flex-col">
-            <h1>Product Page</h1>
-            <table className="text-left table-auto border-separate border-spacing-x-5">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Size</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {postProducts.map((product) => (
-                        <tr key={product.id}>
-                            <td>{product.name}</td>
-                            <td>{product.price}</td>
-                            <td>{product.size}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+        <>
+            <ProductView products={products}/>
+        </>
     );
 }
 
